@@ -6,7 +6,6 @@ import { SuggestionList } from '../../../constant';
 export default function SuggestionGenerate(props) {
     let getInfo = new SuggestionList(props.val);
     let result = getInfo.showSuggestion();
-    console.log(result); 
     return (
         <div id="test">
             {/* <Container> */}
@@ -14,8 +13,8 @@ export default function SuggestionGenerate(props) {
                 <List divided verticalAlign='middle'>
                     <List.Item>
 
-                        {_.map(result, (name, i) => {
-                            return <List.Content key={i}><h3>{name}</h3></List.Content>
+                        {_.map(_.slice(result,0,10), (name, i) => {
+                            return <List.Content key={name} id={name}><h3>{name}</h3></List.Content>
                         })}
                     </List.Item>
                 </List>
