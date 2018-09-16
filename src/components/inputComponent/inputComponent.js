@@ -22,12 +22,7 @@ export default class InputComponent extends Component {
         document.getElementById("test").addEventListener('click', (e) => {
             this.handleClick(e);
         }, false);
-        //added event listner for suggestion click
-        // document.getElementById("gallery") != null ? document.getElementById("gallery").addEventListener('click', (e) => {
-        //     this.handleSuggestionText(e);
-        //     // this.state.suggestionText ='';
-        // }, false) : null;
-        //added event listner for mouse hover in on list
+
         document.getElementById("test").addEventListener('mouseover', (e) => {
             document.getElementById(`${e.target.innerText}`) != null ? document.getElementById(`${e.target.innerText}`).style.backgroundColor = "lightGrey" : null;
         }, false);
@@ -51,8 +46,16 @@ export default class InputComponent extends Component {
     }
     handleClick(e) {
         e.preventDefault();
-        let text = e.target.innerText;
-        this.setState({ suggestionText: '', text, value: text, checkText: true, test: true });
+        console.log(e.target.tagName);
+        if(e.target.tagName!=="BUTTON"){
+            let text = e.target.innerText;
+            this.setState({ suggestionText: '', text, value: text, checkText: true, test: true });
+        }
+        else{
+            localStorage.clear();
+            this.setState({ suggestionText: '', text:'', value: '', checkText: false, test: false });
+
+        }
     }
     handleValue(value) {
         this.setState({
@@ -63,12 +66,6 @@ export default class InputComponent extends Component {
     handleSuggestion(val) {
         this.state.suggestionText = val;
         this.state.checkText = false;
-
-        if (!this.state.suggestionShow) {
-            this.setState({
-                suggestionShow: true
-            });
-        }
     }
 
     render() {
