@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './inputComponent.css';
-import { Input, Container, Menu, List } from 'semantic-ui-react';
+import {  Container, Menu, } from 'semantic-ui-react';
 import Gallery from './gallery/gallery';
-import _ from 'lodash';
 import SuggestionGenerate from './sugggestionGenrate/suggestion';
 import InputHandleChange from './input/input';
 export default class InputComponent extends Component {
@@ -14,9 +13,6 @@ export default class InputComponent extends Component {
         test: false,
         suggestionShow: true
     }
-    handleChange = _.debounce((value) => {
-        this.setState({ value })
-    }, 600);
     componentDidMount() {
         //added event listner for suggestion click
         document.getElementById("test").addEventListener('click', (e) => {
@@ -40,8 +36,12 @@ export default class InputComponent extends Component {
 
     }
     handleSuggestionText() {
-        this.state.suggestionText = '';
-        this.state.test = false;
+        // this.state.suggestionText = '';
+        // this.state.test = false;
+        this.setState({
+            suggestionText:'',
+            test:false
+        });
 
     }
     handleClick(e) {

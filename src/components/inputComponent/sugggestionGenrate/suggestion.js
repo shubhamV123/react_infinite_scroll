@@ -12,7 +12,7 @@ export default function SuggestionGenerate(props) {
             {result.length > 0 && props.val !== '' ? <Segment className='checking'>
                 <List divided verticalAlign='middle'>
                     {_.map(_.slice(result, 0, 10), (name, i) => {
-                            return <List.Item><List.Content key={name} id={name}><h3>{name}</h3></List.Content></List.Item>
+                            return <List.Item key={name}><List.Content  id={name}><h3>{name}</h3></List.Content></List.Item>
                         })}
                     <List.Item>
                     <List.Content floated='right' >

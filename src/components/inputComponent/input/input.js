@@ -13,9 +13,12 @@ export default class InputHandleChange extends Component {
     }, 600);
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.text != null && nextProps.checkText == true) {
+        if (nextProps.text !== null && nextProps.checkText === true) {
             // this.setState({text:nextProps.text});
-            this.state.text = nextProps.text;
+            // this.state.text = nextProps.text;
+            this.setState({
+                text:nextProps.text
+            })
             return true;
         }
         else {

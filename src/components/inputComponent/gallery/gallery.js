@@ -54,7 +54,7 @@ export default class Gallery extends Component {
         })
     }
     shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.value == this.state.value) {
+        if (nextProps.value === this.state.value) {
             return true;
         }
         else {
@@ -92,6 +92,7 @@ export default class Gallery extends Component {
             this.setState({
                 loading: false,
                 scrolling: false,
+                data:this.state.data,
                 totalPage: res.data.pages,
                 text: res.data.photos.photo.length > 0 ? '' : 'NO RESULT FOUND'
             })
@@ -110,7 +111,7 @@ export default class Gallery extends Component {
                         {_.map(this.state.data, (eachPhoto, i) => {
                             return <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
                         })}
-                    </div> : <Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text==''?'Search Something':this.state.text}</Header>}
+                    </div> : <Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text===''?'Search Something':this.state.text}</Header>}
 
                 </Container>
                 <Loader active={this.state.loading} inline='centered' size="big" style={{marginBottom:"1em"}} />
