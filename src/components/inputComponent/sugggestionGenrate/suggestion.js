@@ -7,7 +7,6 @@ export default function SuggestionGenerate(props) {
     let getInfo = new SuggestionList(props.val);
     let result = getInfo.showSuggestion();
     let suggestionShow = localStorage.getItem('suggestion');
-        console.log(suggestionShow)
     return (
         <div id="test">
             {/* <Container> */}

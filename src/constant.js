@@ -2,7 +2,6 @@
 
 class UrlGenerate {
     constructor(text, perPage, page) {
-        console.log(text, perPage, page)
         this.text = text;
         this.perPage = perPage;
         this.page = page;

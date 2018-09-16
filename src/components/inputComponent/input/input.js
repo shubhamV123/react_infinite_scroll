@@ -9,14 +9,11 @@ export default class InputHandleChange extends Component {
         text: ''
     }
     handleChange = _.debounce((value) => {
-        console.log(value);
         this.props.handleValue(value);
     }, 600);
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log(nextProps, nextState);
         if (nextProps.text != null && nextProps.checkText == true) {
-            console.log(nextProps.text);
             // this.setState({text:nextProps.text});
             this.state.text = nextProps.text;
             return true;
