@@ -22,7 +22,7 @@ Goto the project folder and install required dependencies:
 npm install
 ```
 
-##### Note: Go to search_gallery directory than run *npm install*.
+##### Note: Go to react_infinite_scroll directory than run *npm install*.
 
 Start the server:
 
