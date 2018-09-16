@@ -50,6 +50,7 @@ class SuggestionList {
         this.val = val;
     }
     filterResult(result){
+       if(result!=null){
         let array = result.filter(data => {
             let reg = new RegExp(this.val,'gi')
             if(data.search(reg)>=0){
@@ -60,6 +61,10 @@ class SuggestionList {
             }
         });
         return array;
+       }
+       else{
+           return [];
+       }
     }
     showSuggestion() {
         let getInfoFromCookie = JSON.parse(localStorage.getItem('Search'));
