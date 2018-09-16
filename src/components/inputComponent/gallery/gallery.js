@@ -104,11 +104,11 @@ export default class Gallery extends Component {
     }
     render() {
         return (
-            <Segment>
+            <Segment id="gallery">
                 <Container fluid>
-                    {this.state.data.length > 0 ? <div className="gallery">
+                    {this.state.data.length > 0 ? <div className="gallery" >
                         {_.map(this.state.data, (eachPhoto, i) => {
-                            return <GalleryGenerate src={eachPhoto.src} key={i} />
+                            return <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
                         })}
                     </div> : <Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text==''?'Search Something':this.state.text}</Header>}
 

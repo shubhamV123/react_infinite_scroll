@@ -1,11 +1,13 @@
 import React from 'react';
-import { Segment, List, Container } from 'semantic-ui-react';
+import { Segment, List,Button } from 'semantic-ui-react';
 import './sugestion.css';
 import _ from 'lodash'
 import { SuggestionList } from '../../../constant';
 export default function SuggestionGenerate(props) {
     let getInfo = new SuggestionList(props.val);
     let result = getInfo.showSuggestion();
+    let suggestionShow = localStorage.getItem('suggestion');
+        console.log(suggestionShow)
     return (
         <div id="test">
             {/* <Container> */}
@@ -18,8 +20,10 @@ export default function SuggestionGenerate(props) {
                         })}
                     </List.Item>
                 </List>
+                
             </Segment> : null}
             {/* </Container> */}
+            {/* <Button onClick={() => {localStorage.clear()}}>Clear</Button> */}
         </div>
     )
 }
