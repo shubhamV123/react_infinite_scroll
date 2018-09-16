@@ -1,5 +1,5 @@
 
-# React Infinite Scrolling
+# React Infinite Scroll
 
 A  web app made using ReactJs and other javascript concepts.
 The demo of this app is [here](http://shubhamV123.github.io/react_infinite_scroll).
