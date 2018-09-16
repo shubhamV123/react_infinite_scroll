@@ -75,7 +75,7 @@ export default class InputComponent extends Component {
 
                     <div className="App">
                         <header className="App-header">
-                            <h1 className="App-title">Welcome to React Gallery</h1>
+                            <h1 className="App-title">Welcome to Search Gallery</h1>
 
                             <Container className="listColor">
                                 {/*Simple Input handle*/}
