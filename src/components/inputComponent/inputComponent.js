@@ -30,6 +30,7 @@ export default class InputComponent extends Component {
         document.body.addEventListener('keypress', (e) => {
             var key = e.which || e.keyCode;
             if (key === 13) { // 13 is enter
+                // console.log('Hitted enter')
                 this.setState({ suggestionText: '', text: this.state.value, value: this.state.value, checkText: true, test: true });
             }
         });
