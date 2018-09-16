@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './gallery.css';
 import { Container, Loader, Segment, Header } from 'semantic-ui-react';
 import axios from 'axios';
-import { UrlGenerate, ImageUrlGenerate, CookieSave } from '../../../constant';
+import { UrlGenerate, ImageUrlGenerate, SaveInfo } from '../../../constant';
 import _ from 'lodash';
 import GalleryGenerate from './galleryGenerate/galleryGenerate';
 export default class Gallery extends Component {
@@ -78,8 +78,8 @@ export default class Gallery extends Component {
             loading: true,
             text: ''
         })
-        let cookie = new CookieSave(this.state.value);
-        cookie.setCookie();
+        let saveInfo = new SaveInfo(this.state.value);
+        saveInfo.setInfo();
         let url = new UrlGenerate(this.state.value, this.state.perPage, this.state.page);
         axios.get(url.generateUrl()).then((res) => {
             res.data.photos.photo.length > 0 ? (_.map(res.data.photos.photo, (link) => {

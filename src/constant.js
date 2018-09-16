@@ -25,13 +25,13 @@ class ImageUrlGenerate {
         return `https://farm${this.farm_id}.staticflickr.com/${this.server_id}/${this.id}_${this.secret}_${this.size}.jpg`;
     }
 }
-class CookieSave {
+class SaveInfo {
     constructor(value) {
         this.value = value;
     }
 
-    setCookie() {
-        let arr = this.getCookie() !== null ? JSON.parse(this.getCookie()) : [];
+    setInfo() {
+        let arr = this.getInfo() !== null ? JSON.parse(this.getInfo()) : [];
         //avoid duplicates 
         if (!arr.includes(this.value)) {
             arr.push(this.value)
@@ -40,7 +40,7 @@ class CookieSave {
 
     }
 
-    getCookie() {
+    getInfo() {
         return localStorage.getItem('Search');
     }
 }
@@ -66,14 +66,14 @@ class SuggestionList {
        }
     }
     showSuggestion() {
-        let getInfoFromCookie = JSON.parse(localStorage.getItem('Search'));
-        return this.filterResult(getInfoFromCookie);
+        let getInfoFromLocalStorage = JSON.parse(localStorage.getItem('Search'));
+        return this.filterResult(getInfoFromLocalStorage);
     }
 }
 
 module.exports = {
     UrlGenerate,
     ImageUrlGenerate,
-    CookieSave,
+    SaveInfo,
     SuggestionList
 }
