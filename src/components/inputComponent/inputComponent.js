@@ -1,57 +1,77 @@
 import React, { Component } from 'react';
 import './inputComponent.css';
-import { Input, Container, Menu,List } from 'semantic-ui-react';
+import { Input, Container, Menu, List } from 'semantic-ui-react';
 import Gallery from './gallery/gallery';
 import _ from 'lodash';
 import SuggestionGenerate from './sugggestionGenrate/suggestion';
 import InputHandleChange from './input/input';
 export default class InputComponent extends Component {
     state = {
-        value:'',
-        showSuggestion:false,
-        suggestionText:null,
-        text:null,
-        checkText:false
+        value: '',
+        suggestionText: null,
+        text: null,
+        checkText: false,
+        test: false,
+        suggestionShow: true
     }
     handleChange = _.debounce((value) => {
-        console.log(value);
-        this.setState({value,showSuggestion:true})
-    },600);
-    componentDidMount(){
+        this.setState({ value })
+    }, 600);
+    componentDidMount() {
+        //added event listner for suggestion click
         document.getElementById("test").addEventListener('click', (e) => {
             this.handleClick(e);
-        }, false); 
+        }, false);
+        //added event listner for suggestion click
+        // document.getElementById("gallery") != null ? document.getElementById("gallery").addEventListener('click', (e) => {
+        //     this.handleSuggestionText(e);
+        //     // this.state.suggestionText ='';
+        // }, false) : null;
+        //added event listner for mouse hover in on list
         document.getElementById("test").addEventListener('mouseover', (e) => {
-            console.log('Works e.target',e.target.innerText,document.getElementById(`${e.target.innerText}`));
-            document.getElementById(`${e.target.innerText}`)!=null?document.getElementById(`${e.target.innerText}`).style.backgroundColor = "lightGrey":null;
+            document.getElementById(`${e.target.innerText}`) != null ? document.getElementById(`${e.target.innerText}`).style.backgroundColor = "lightGrey" : null;
         }, false);
+        //added event listner for mouse hover out on list
         document.getElementById("test").addEventListener('mouseout', (e) => {
-            document.getElementById(`${e.target.innerText}`)!=null?document.getElementById(`${e.target.innerText}`).style.backgroundColor = "white":null;
+            document.getElementById(`${e.target.innerText}`) != null ? document.getElementById(`${e.target.innerText}`).style.backgroundColor = "white" : null;
         }, false);
+        //added event listner for key enter
+        document.body.addEventListener('keypress', (e) => {
+            var key = e.which || e.keyCode;
+            if (key === 13) { // 13 is enter
+                this.setState({ suggestionText: '', text: this.state.value, value: this.state.value, checkText: true, test: true });
+            }
+        });
 
     }
-    handleClick(e){
-        e.preventDefault();
-        console.log('works',e.target.innerText);
-        let text = e.target.innerText;
-        this.setState({suggestionText:'',text,value:text,checkText:true});
+    handleSuggestionText() {
+        this.state.suggestionText = '';
+        this.state.test = false;
+
     }
-    handleValue(value){
+    handleClick(e) {
+        e.preventDefault();
+        let text = e.target.innerText;
+        this.setState({ suggestionText: '', text, value: text, checkText: true, test: true });
+    }
+    handleValue(value) {
         this.setState({
             value,
-            showSuggestion:true
+            suggestionShow: true
         })
     }
-    handleSuggestion(val){
+    handleSuggestion(val) {
         this.state.suggestionText = val;
         this.state.checkText = false;
-    //     this.setState({
-    //         suggestionText:val
-    //     })
+
+        if (!this.state.suggestionShow) {
+            this.setState({
+                suggestionShow: true
+            });
+        }
     }
-   
+
     render() {
-        console.log(this.state.suggestionText);
         return (
             <div>
                 <Menu fixed='top'>
@@ -61,23 +81,17 @@ export default class InputComponent extends Component {
                             <h1 className="App-title">Welcome to React Gallery</h1>
 
                             <Container className="listColor">
-                                {/* <Input icon='search'
-                                    className="inputText"
-                                    value = {(this.state.suggestionText!=='')?this.state.suggestionText:this.state.value==''?'':this.state.text}
-                                    placeholder='Type whatever you want to fetch the information from flickr...'
-                                    onChange = {(e) => {this.handleChange(e.target.value);this.setState({suggestionText:e.target.value})}} 
-                                    /> */}
-                                <InputHandleChange checkText={this.state.checkText} text={this.state.text} handleValue = {this.handleValue.bind(this)} handleSuggestion = {this.handleSuggestion.bind(this)}/>
-                                <SuggestionGenerate val={this.state.suggestionText}/>
+                                <InputHandleChange checkText={this.state.checkText} text={this.state.text} handleValue={this.handleValue.bind(this)} handleSuggestion={this.handleSuggestion.bind(this)} />
+                                <SuggestionGenerate val={this.state.suggestionText} />
 
                             </Container>
                         </header>
                     </div>
                 </Menu>
-                
 
-                
-                <Gallery value={this.state.value}/>
+
+
+                <Gallery value={this.state.value} />
             </div>
 
         )
