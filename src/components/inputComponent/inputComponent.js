@@ -78,7 +78,9 @@ export default class InputComponent extends Component {
                             <h1 className="App-title">Welcome to React Gallery</h1>
 
                             <Container className="listColor">
+                                {/*Simple Input handle*/}
                                 <InputHandleChange checkText={this.state.checkText} text={this.state.text} handleValue={this.handleValue.bind(this)} handleSuggestion={this.handleSuggestion.bind(this)} />
+                                {/*Simple List handle*/}
                                 <SuggestionGenerate val={this.state.suggestionText} />
 
                             </Container>
@@ -87,7 +89,7 @@ export default class InputComponent extends Component {
                 </Menu>
 
 
-
+                {/*Simple Gallery handle*/}
                 <Gallery value={this.state.value} />
             </div>
 

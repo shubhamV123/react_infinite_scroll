@@ -37,6 +37,7 @@ export default class Gallery extends Component {
             this.handleScroll()
         })
     }
+    //handling scroll event
     handleScroll = () => {
         let { scrolling, totalPage, page } = this.state;
         if (scrolling) return;
@@ -64,6 +65,7 @@ export default class Gallery extends Component {
         }
 
     }
+    //Runs when user at bottom of screen
     loadNew() {
 
         this.setState(prevState => ({
@@ -73,6 +75,7 @@ export default class Gallery extends Component {
             this.state.value.length > 0 ? this.loadMore() : null
         });
     }
+    //Function to load 15 results
     loadMore() {
         this.setState({
             loading: true,
@@ -109,6 +112,7 @@ export default class Gallery extends Component {
                 <Container fluid>
                     {this.state.data.length > 0 ? <div className="gallery" >
                         {_.map(this.state.data, (eachPhoto, i) => {
+                            //Generating gallery
                             return <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
                         })}
                     </div> : <Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text===''?'Search Something':this.state.text}</Header>}

@@ -3,6 +3,7 @@ import { Segment, List, Button } from 'semantic-ui-react';
 import './sugestion.css';
 import _ from 'lodash'
 import { SuggestionList } from '../../../constant';
+//Generate Suggestion List
 export default function SuggestionGenerate(props) {
     let getInfo = new SuggestionList(props.val);
     let result = getInfo.showSuggestion();
