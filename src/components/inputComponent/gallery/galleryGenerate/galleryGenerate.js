@@ -22,14 +22,16 @@ export default class GalleryGenerate extends Component {
                      open={this.state.modalOpen}
                      onClose={this.handleClose} >
                         <Modal.Header><center>{title} <Icon name="close" onClick={this.handleClose} style={{cursor:"pointer",float:"right"}}/></center></Modal.Header>
-                        <center><Modal.Content>
+                        <center>
+                            <Modal.Content>
                                 <Responsive minWidth={1100}>
                                 <Image src={imgUrl.generateImageSrcURL()} key={this.props.key} style={{maxWidth:"70%"}}/>
                                 </Responsive>
                                 <Responsive maxWidth={1099}>
                                 <Image src={imgUrl.generateImageSrcURL()} key={this.props.key} />
                                 </Responsive>
-                            </Modal.Content></center>
+                            </Modal.Content>
+                        </center>
                     </Modal>
 
                 </div>

@@ -81,8 +81,8 @@ export default class Gallery extends Component {
             loading: true,
             text: ''
         })
-        let saveInfo = new SaveInfo(this.state.value);
-        saveInfo.setInfo();
+        let saveInfoLocal = new SaveInfo(this.state.value);
+        saveInfoLocal.setInfo();
         let url = new UrlGenerate(this.state.value, this.state.perPage, this.state.page);
         axios.get(url.generateUrl()).then((res) => {
             res.data.photos.photo.length > 0 ? (_.map(res.data.photos.photo, (link) => {

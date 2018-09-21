@@ -6,13 +6,12 @@ import { SuggestionList } from '../../../constant';
 //Generate Suggestion List
 export default function SuggestionGenerate(props) {
     let getInfo = new SuggestionList(props.val);
-    let result = getInfo.showSuggestion();
-    let suggestionShow = localStorage.getItem('suggestion');
+    let suggestionInfoResult = getInfo.showSuggestion();
     return (
         <div id="test">
-            {result.length > 0 && props.val !== '' ? <Segment className='checking'>
+            {suggestionInfoResult.length > 0 && props.val !== '' ? <Segment className='checking'>
                 <List divided verticalAlign='middle'>
-                    {_.map(_.slice(result, 0, 10), (name, i) => {
+                    {_.map(_.slice(suggestionInfoResult, 0, 10), (name, i) => {
                             return <List.Item key={name}><List.Content  id={name}><h3>{name}</h3></List.Content></List.Item>
                         })}
                     <List.Item>
