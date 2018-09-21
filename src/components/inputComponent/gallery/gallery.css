@@ -1,11 +1,11 @@
 .gallery{
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
     /* flex-direction: column; */
-    flex-flow: row wrap;
-    margin-top: 10rem;
-    height: 100%;
-    align-content: flex-start;
+    /* flex-flow: row wrap; */
+    /* margin-top: 10rem; */
+    /* height: 100%; */
+    /* align-content: flex-start; */
 }
 .cell{
     margin: 1em;

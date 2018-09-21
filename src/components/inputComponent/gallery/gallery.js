@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './gallery.css';
-import { Container, Loader, Segment, Header } from 'semantic-ui-react';
+import { Container, Loader, Segment, Header,Grid } from 'semantic-ui-react';
 import axios from 'axios';
 import { UrlGenerate, ImageUrlGenerate, SaveInfo } from '../../../constant';
 import _ from 'lodash';
@@ -95,7 +95,7 @@ export default class Gallery extends Component {
             this.setState({
                 loading: false,
                 scrolling: false,
-                data:this.state.data,
+                data: this.state.data,
                 totalPage: res.data.pages,
                 text: res.data.photos.photo.length > 0 ? '' : 'NO RESULT FOUND'
             })
@@ -110,15 +110,21 @@ export default class Gallery extends Component {
         return (
             <Segment id="gallery">
                 <Container fluid>
-                    {this.state.data.length > 0 ? <div className="gallery" >
+                
+                    {this.state.data.length > 0 ?<Grid divided='vertically' stackable style={{marginTop:"6em"}}>
+
+                        <Grid.Row columns={4}>
                         {_.map(this.state.data, (eachPhoto, i) => {
                             //Generating gallery
-                            return <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
+                            return <Grid.Column>
+                                    <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
+                                </Grid.Column>
                         })}
-                    </div> : <Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text===''?'Search Something':this.state.text}</Header>}
-
+                            
+                        </Grid.Row>
+                    </Grid>:<Header as="h1" textAlign="center" style={{ marginTop: "8rem" }}>{this.state.text===''?'Search Something':this.state.text}</Header>}
                 </Container>
-                <Loader active={this.state.loading} inline='centered' size="big" style={{marginBottom:"1em"}} />
+                <Loader active={this.state.loading} inline='centered' size="big" style={{ marginBottom: "1em" }} />
             </Segment>
         )
     }
