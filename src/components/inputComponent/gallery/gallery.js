@@ -40,6 +40,7 @@ export default class Gallery extends Component {
     //handling scroll event
     handleScroll = () => {
         let { scrolling, totalPage, page } = this.state;
+        this.props.handleScrollSuggestion();
         if (scrolling) return;
         if (totalPage <= page) return;
         if (document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight - 30) {
@@ -116,8 +117,8 @@ export default class Gallery extends Component {
                         <Grid.Row columns={4}>
                         {_.map(this.state.data, (eachPhoto, i) => {
                             //Generating gallery
-                            return <Grid.Column>
-                                    <GalleryGenerate src={eachPhoto.src} key={i} data={eachPhoto}/>
+                            return <Grid.Column key = {eachPhoto.id}>
+                                    <GalleryGenerate src={eachPhoto.src} key={eachPhoto.id} data={eachPhoto}/>
                                 </Grid.Column>
                         })}
                             

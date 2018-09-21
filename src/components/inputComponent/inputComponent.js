@@ -62,15 +62,23 @@ export default class InputComponent extends Component {
     handleValue(value) {
         this.setState({
             value,
-            suggestionShow: true
+            suggestionShow: true,
         })
     }
     handleSuggestion(val) {
         this.state.suggestionText = val;
         this.state.checkText = false;
     }
+    handleScrollSuggestion(){
+        if(!this.state.suggestionText==''){
+            this.setState({
+                suggestionText:''
+            });
+        }
+    }
 
     render() {
+        console.log("Inside Render:",this.state.suggestionText);
         return (
             <div>
                 <Menu fixed='top'>
@@ -92,7 +100,7 @@ export default class InputComponent extends Component {
 
 
                 {/*Simple Gallery handle*/}
-                <Gallery value={this.state.value} />
+                <Gallery value={this.state.value} handleScrollSuggestion={this.handleScrollSuggestion.bind(this)}/>
             </div>
 
         )
