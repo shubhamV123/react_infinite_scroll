@@ -20,6 +20,7 @@ export default class InputComponent extends Component {
         }, false);
 
         document.getElementById("test").addEventListener('mouseover', (e) => {
+            console.log( document.getElementById(`${e.target.innerText}`));
             document.getElementById(`${e.target.innerText}`) != null ? document.getElementById(`${e.target.innerText}`).style.backgroundColor = "lightGrey" : null;
         }, false);
         //added event listner for mouse hover out on list

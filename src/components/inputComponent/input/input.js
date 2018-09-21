@@ -34,9 +34,9 @@ export default class InputHandleChange extends Component {
                     value={this.state.text}
                     placeholder='Type whatever you want to fetch the information from flickr...'
                     onChange={(e) => {
-                        this.handleChange(e.target.value);
-                        this.setState({ text: e.target.value })
-                        this.props.handleSuggestion(e.target.value);
+                        this.handleChange(e.target.value.replace(/\s/g, ''));
+                        this.setState({ text: e.target.value.replace(/\s/g, '') })
+                        this.props.handleSuggestion(e.target.value.replace(/\s/g, ''));
                     }}
                 />
             </div>
