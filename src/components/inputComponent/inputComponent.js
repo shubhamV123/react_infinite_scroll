@@ -78,7 +78,6 @@ export default class InputComponent extends Component {
     }
 
     render() {
-        console.log("Inside Render:",this.state.suggestionText);
         return (
             <div>
                 <Menu fixed='top'>
